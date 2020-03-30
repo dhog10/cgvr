@@ -1,4 +1,3 @@
-# cgvr
 CGVR OpenVR C++ module for Garry's Mod (Based on catsethecat vrmod-module).
 Some changes have been made to the original code to accomodate for my needs and catch some exceptions.
 Full source code is available in this repository.
