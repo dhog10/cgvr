@@ -151,7 +151,7 @@ LUA_FUNCTION(CGVR_InitializeSystem) {
 }
 
 //*************************************************************************
-//    Lua function: CGVR_InitializeSystem()
+//    Lua function: CGVR_IsHmdPresent()
 //*************************************************************************
 LUA_FUNCTION(CGVR_IsHmdPresent) {
 	LUA->PushBool(vr::VR_IsHmdPresent());
@@ -365,6 +365,9 @@ LUA_FUNCTION(VRMOD_UpdatePosesAndActions) {
 	return 0;
 }
 
+//*************************************************************************
+//    Lua function: CGVR_HasPose()
+//*************************************************************************
 LUA_FUNCTION(CGVR_HasPose) {
 	const char* poseName = LUA->CheckString(1);
 
