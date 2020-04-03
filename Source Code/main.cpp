@@ -164,22 +164,22 @@ LUA_FUNCTION(CGVR_IsHmdPresent) {
 LUA_FUNCTION(VRMOD_Init) {
 	vr::HmdError error = vr::VRInitError_None;
 
-	g_pSystem = vr::VR_Init(&error, vr::VRApplication_Scene);
-	if (error != vr::VRInitError_None || g_pSystem == nullptr) {
-		LUA->PushBool(false);
-		LUA->PushString("[C++] VR_Init failed");
-
-		return 2;
-	}
-
-	if (!vr::VRCompositor()) {
-		LUA->PushBool(false);
-		LUA->PushString("[C++] VRCompositor failed");
-
-		return 2;
-	}
-
 	__try {
+		g_pSystem = vr::VR_Init(&error, vr::VRApplication_Scene);
+		if (error != vr::VRInitError_None || g_pSystem == nullptr) {
+			LUA->PushBool(false);
+			LUA->PushString("[C++] VR_Init failed");
+
+			return 2;
+		}
+
+		if (!vr::VRCompositor()) {
+			LUA->PushBool(false);
+			LUA->PushString("[C++] VRCompositor failed");
+
+			return 2;
+		}
+
 		vr::HmdMatrix44_t proj = g_pSystem->GetProjectionMatrix(vr::Hmd_Eye::Eye_Left, 1, 10);
 		float xscale = proj.m[0][0];
 		float xoffset = proj.m[0][2];
